@@ -35,7 +35,7 @@ function placeRandomMine(minefield) {
 }
 
 function placeManyRandomMines(minefield) {
-    for(var i = 0; i < 10; i++) {
+    for(var i = 0; i < 15; i++) {
         placeRandomMine(minefield);
     }
 }
@@ -209,7 +209,11 @@ angular.module('minesweeper', []).controller('MinesweeperController', function($
     }
     $scope.uncoverSpot = function(spot) {
         if ($scope.localFlag != 0) {
-            spot.flag = $scope.localFlag;
+            if (spot.flag == $scope.localFlag) {
+                spot.flag = 0;
+            } else {
+                spot.flag = $scope.localFlag;
+            }
             $scope.localFlag = 0;
             return;
         }
